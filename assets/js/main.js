@@ -231,3 +231,24 @@ sr.reveal(`.footer, footer__container`, {
   origin: "bottom",
   distance: "30px",
 });
+
+
+function validateEmail(email) {
+  var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return regex.test(email);
+}
+
+function submitForm(event) {
+  event.preventDefault(); // Prevent the form from being submitted normally
+
+  var email = document.getElementById('email').value;
+  if (!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return false;
+  }
+
+  // Display success message
+  alert('Your message has been sent successfully!');
+  // Optionally, you can clear the form fields here
+  document.querySelector('.contact__form').reset();
+}
